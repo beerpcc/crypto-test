@@ -11,7 +11,10 @@ class Util {
     int duplicatedPairCount = 0;
     int? prevNumber;
     for (String currentChar in code.split('')) {
-      final int currentNumber = int.parse(currentChar);
+      final int? parseNumber = int.tryParse(currentChar);
+      if (parseNumber == null) return false;
+      final currentNumber = parseNumber;
+      
       if (prevNumber != null) {
 
         // validate contiguous
